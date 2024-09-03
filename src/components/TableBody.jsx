@@ -1,4 +1,14 @@
-export function TableBody({ items }) {
+export function TableBody({ items, refreshItem }) {
+  async function remove(id) {
+    const response = await fetch(`http://localhost:3000/api/items/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      refreshItem();
+    }
+  }
+
   return (
     <tbody>
       {items.map((item, index) => (
@@ -13,7 +23,9 @@ export function TableBody({ items }) {
             </div>
           </td>
           <td>
-            <div id="btn">X</div>
+            <div id="btn" onClick={() => remove(item.Id)}>
+              X
+            </div>
           </td>
         </tr>
       ))}

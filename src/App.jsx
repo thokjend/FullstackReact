@@ -29,7 +29,7 @@ export default function App() {
     <>
       <table>
         <TableHeader />
-        <TableBody items={items} />
+        <TableBody items={items} refreshItem={getDatabase} />
       </table>
       <InputBox refreshItems={getDatabase} />
     </>
