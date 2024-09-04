@@ -6,15 +6,6 @@ import { InputBox } from "./components/InputBox";
 export default function App() {
   const [items, setItems] = useState([]);
 
-  const [editObject, setEditObject] = useState({
-    id: "",
-    type: "",
-    name: "",
-    ilvl: "",
-  });
-
-  const [editMode, setEditMode] = useState(false);
-
   async function getDatabase() {
     const response = await fetch("http://localhost:3000/api/items");
     const data = await response.json();
